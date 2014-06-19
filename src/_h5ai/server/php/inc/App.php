@@ -72,7 +72,7 @@ class App {
 		$encoded_parts = array();
 		foreach ($parts as $part) {
 			if ($part) {
-				$encoded_parts[] = rawurlencode($part);
+				$encoded_parts[] = rawurlencode(utf8_encode($part));
 			}
 		}
 
@@ -88,7 +88,7 @@ class App {
 
 		$abs_href = substr($abs_href, strlen($this->root_abs_href));
 
-		return normalize_path($this->root_abs_path . "/" . rawurldecode($abs_href));
+		return normalize_path($this->root_abs_path . "/" . utf8_decode(rawurldecode($abs_href)));
 	}
 
 
